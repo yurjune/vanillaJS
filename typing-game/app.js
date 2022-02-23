@@ -14,8 +14,8 @@ const $startBtn = document.querySelector(".section__start-btn");
 const $result = document.querySelector(".section__result");
 const $resultScore = document.querySelector(".section__result-score");
 
-let fullTime = 100;
-let maxWords = 3;
+let fullTime = 30;
+let maxWords = 10;
 let wordsList;
 let prevNumber;
 let currentScore;
@@ -88,6 +88,7 @@ function countDown() {
 
 function startGame() {
   if (isPlaying) return;
+  $input.focus();
   $result.classList.add('section__result--hidden');
   isPlaying = true;
   getWords();
