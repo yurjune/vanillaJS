@@ -14,8 +14,10 @@ const $startBtn = document.querySelector(".section__start-btn");
 const $result = document.querySelector(".section__result");
 const $resultScore = document.querySelector(".section__result-score");
 
-let fullTime = 10;
-let wordsList = [];
+let fullTime = 100;
+let maxWords = 3;
+let wordsList;
+let prevNumber;
 let currentScore;
 let currentTime;
 let timer = null;
@@ -33,8 +35,8 @@ function init() {
 }
 
 function getWords() {
-  changeBtn('로딩 중...')
-  fetch('https://random-word-api.herokuapp.com/word?number=10')
+  changeBtn('로딩 중...');
+  fetch(`https://random-word-api.herokuapp.com/word?number=${maxWords}`)
     .then(res => res.json())
     .then(res => {
       wordsList = res;
@@ -45,8 +47,21 @@ function getWords() {
 }
 
 function pickRandomWord() {
-  const num = Math.floor(Math.random() * (11 - 0) + 0);
+  let num = getRandomNumber();
+  // 이전 단어와 새 단어가 같으면 다시 뽑기
+  if (prevNumber || prevNumber === 0) {
+    while (prevNumber === num) {
+      num = getRandomNumber();
+    }
+  }
+  console.log(num);
   $word.innerText = wordsList[num];
+  prevNumber = num;
+  
+  function getRandomNumber() {
+    const num = Math.floor(Math.random() * (maxWords - 0) + 0);
+    return num;
+  }
 }
 
 function handleSubmit(e) {
