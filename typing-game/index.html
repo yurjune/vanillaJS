@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="./reset.css" rel="stylesheet">
+  <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header">타이핑 마스터</div>
+  </header>
+  <section>
+    <div class="section">
+      <div class="section__word"></div>
+      <form action="#" class="section__form">
+        <input class="section__input">
+      </form>
+      <div class="section__score">
+        <div class="section__left-time">
+          남은시간: <span class="section__value"></span>
+        </div>
+        <div class="section__my-score">
+          얻은점수: <span class="section__value"></span>
+        </div>
+      </div>
+      <button class="section__start-btn section__start-btn--loading">
+        게임시작
+      </button>
+      <div class="section__result section__result--hidden">당신의 점수는 <span class="section__result-score"></span>점 입니다</div>
+    </div>
+  </section>
+  <script src="./app.js">
+  </script>
+</body>
+</html>
